@@ -46,7 +46,8 @@ public class Generator {
             inputs.add(stringBuilder.append("\n").toString());
         }
 
-        File file = new File("texts/" + message.toLowerCase() + ".txt");
+        System.out.println("Creating file " + toFileName(message.toLowerCase() + "..."));
+        File file = new File("texts/" + toFileName(message.toLowerCase()) + ".txt");
         if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
 
         try (FileWriter writer = new FileWriter(file)) {
@@ -60,6 +61,10 @@ public class Generator {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static String toFileName(String str) {
+        return str.replace(" ", "_").replaceAll("[^a-zA-Z0-9\\\\.\\-_]", "");
     }
 
     private static String toHex(Color color) {
