@@ -46,7 +46,6 @@ public class Generator {
             inputs.add(stringBuilder.append("\n").toString());
         }
 
-        System.out.println("Creating file " + toFileName(message.toLowerCase() + "..."));
         File file = new File("texts/" + toFileName(message.toLowerCase()) + ".txt");
         if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
 
